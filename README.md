@@ -31,5 +31,120 @@ A solução foi modelada utilizando o **Modelo C4** com separação em múltiplo
 
 ---
 
+## 🚀 Status do Desenvolvimento
+
+### ✅ Implementado
+
+- **Módulo de Usuários**
+  - CRUD completo com 8 endpoints REST
+  - Validações de email único e regras de negócio
+  - Criptografia de senhas com BCrypt
+  - Filtros por tipo (CIDADAO, GESTOR) e status ativo
+  - Testes unitários com cobertura completa
+  - Documentação Swagger integrada
+
+- **Módulo de Ocorrências**
+  - CRUD completo de ocorrências urbanas
+  - Upload e gerenciamento de imagens
+  - Sistema de status e priorização
+  - Filtros avançados por status, categoria e localização
+
+### 🔄 Em Desenvolvimento
+
+- Sistema de autenticação JWT
+- Notificações em tempo real
+- Dashboard administrativo
+
+---
+
+## 📡 Endpoints da API
+
+### Usuários (`/usuarios`)
+
+| Método | Endpoint | Descrição |
+|--------|----------|-----------|
+| GET | `/usuarios` | Lista todos os usuários |
+| GET | `/usuarios/{id}` | Busca usuário por ID |
+| GET | `/usuarios/email/{email}` | Busca usuário por email |
+| GET | `/usuarios/tipo/{tipo}` | Busca usuários por tipo (CIDADAO/GESTOR) |
+| GET | `/usuarios/ativos` | Lista apenas usuários ativos |
+| POST | `/usuarios` | Cria novo usuário |
+| PUT | `/usuarios/{id}` | Atualiza usuário existente |
+| PATCH | `/usuarios/{id}/ativo` | Ativa/desativa usuário |
+| DELETE | `/usuarios/{id}` | Remove usuário |
+
+### Ocorrências (`/ocorrencias`)
+
+| Método | Endpoint | Descrição |
+|--------|----------|-----------|
+| GET | `/ocorrencias` | Lista todas as ocorrências |
+| GET | `/ocorrencias/{id}` | Busca ocorrência por ID |
+| GET | `/ocorrencias/status/{status}` | Filtra por status |
+| POST | `/ocorrencias` | Cria nova ocorrência |
+| PUT | `/ocorrencias/{id}` | Atualiza ocorrência |
+| PATCH | `/ocorrencias/{id}/status` | Atualiza status da ocorrência |
+| DELETE | `/ocorrencias/{id}` | Remove ocorrência |
+
+> 📖 Documentação completa disponível em: `http://localhost:8080/swagger-ui.html`
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+### Backend
+- **Java 17**
+- **Spring Boot 3.x**
+- **Spring Data JPA** - Persistência de dados
+- **Spring Security** - Segurança e autenticação
+- **PostgreSQL** - Banco de dados relacional
+- **Lombok** - Redução de boilerplate
+- **MapStruct** - Mapeamento de DTOs
+- **Swagger/OpenAPI** - Documentação da API
+- **JUnit 5 + Mockito** - Testes unitários
+
+### Frontend
+- **React** (em desenvolvimento)
+- **TypeScript**
+- **Tailwind CSS**
+
+---
+
+## 🚀 Como Executar
+
+### Pré-requisitos
+- Java 17+
+- Maven 3.8+
+- PostgreSQL 14+
+- Node.js 18+ (para o frontend)
+
+### Backend
+
+1. **Configure o banco de dados** no arquivo `application.properties`:
+```properties
+spring.datasource.url=jdbc:postgresql://localhost:5432/conectapg
+spring.datasource.username=seu_usuario
+spring.datasource.password=sua_senha
+```
+
+2. **Execute o projeto**:
+```bash
+cd backend
+./mvnw spring-boot:run
+```
+
+3. **Acesse a documentação da API**:
+```
+http://localhost:8080/swagger-ui.html
+```
+
+### Testes
+
+```bash
+cd backend
+./mvnw test
+```
+
+---
+
 ## 📂 Estrutura do Repositório
 
