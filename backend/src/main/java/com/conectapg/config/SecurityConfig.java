@@ -27,6 +27,7 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/v3/api-docs/**", "/api/swagger-ui/**", "/api/swagger-ui.html").permitAll()
                 .requestMatchers("/api/ocorrencias/**").permitAll() // Temporário - implementar autenticação depois
+                .requestMatchers("/api/usuarios/**").permitAll() // Temporário - implementar autenticação depois
                 .anyRequest().authenticated()
             );
 

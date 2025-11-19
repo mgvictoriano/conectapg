@@ -1,6 +1,7 @@
 package com.conectapg.api.controller;
 
-import com.conectapg.domain.model.Ocorrencia;
+import com.conectapg.api.dto.OcorrenciaRequest;
+import com.conectapg.api.dto.OcorrenciaResponse;
 import com.conectapg.domain.model.Ocorrencia.StatusOcorrencia;
 import com.conectapg.domain.service.OcorrenciaService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -23,52 +24,52 @@ public class OcorrenciaController {
 
     @GetMapping
     @Operation(summary = "Listar todas as ocorrências")
-    public ResponseEntity<List<Ocorrencia>> listarTodas() {
+    public ResponseEntity<List<OcorrenciaResponse>> listarTodas() {
         return ResponseEntity.ok(ocorrenciaService.listarTodas());
     }
 
     @GetMapping("/{id}")
     @Operation(summary = "Buscar ocorrência por ID")
-    public ResponseEntity<Ocorrencia> buscarPorId(@PathVariable Long id) {
+    public ResponseEntity<OcorrenciaResponse> buscarPorId(@PathVariable Long id) {
         return ResponseEntity.ok(ocorrenciaService.buscarPorId(id));
     }
 
     @GetMapping("/status/{status}")
     @Operation(summary = "Buscar ocorrências por status")
-    public ResponseEntity<List<Ocorrencia>> buscarPorStatus(@PathVariable StatusOcorrencia status) {
+    public ResponseEntity<List<OcorrenciaResponse>> buscarPorStatus(@PathVariable StatusOcorrencia status) {
         return ResponseEntity.ok(ocorrenciaService.buscarPorStatus(status));
     }
 
     @GetMapping("/usuario/{usuarioId}")
     @Operation(summary = "Buscar ocorrências por usuário")
-    public ResponseEntity<List<Ocorrencia>> buscarPorUsuario(@PathVariable Long usuarioId) {
+    public ResponseEntity<List<OcorrenciaResponse>> buscarPorUsuario(@PathVariable Long usuarioId) {
         return ResponseEntity.ok(ocorrenciaService.buscarPorUsuario(usuarioId));
     }
 
     @GetMapping("/localizacao")
     @Operation(summary = "Buscar ocorrências por localização")
-    public ResponseEntity<List<Ocorrencia>> buscarPorLocalizacao(@RequestParam String localizacao) {
+    public ResponseEntity<List<OcorrenciaResponse>> buscarPorLocalizacao(@RequestParam String localizacao) {
         return ResponseEntity.ok(ocorrenciaService.buscarPorLocalizacao(localizacao));
     }
 
     @PostMapping
     @Operation(summary = "Criar nova ocorrência")
-    public ResponseEntity<Ocorrencia> criar(@Valid @RequestBody Ocorrencia ocorrencia) {
-        Ocorrencia novaCorrencia = ocorrenciaService.criar(ocorrencia);
-        return ResponseEntity.status(HttpStatus.CREATED).body(novaCorrencia);
+    public ResponseEntity<OcorrenciaResponse> criar(@Valid @RequestBody OcorrenciaRequest request) {
+        OcorrenciaResponse novaOcorrencia = ocorrenciaService.criar(request);
+        return ResponseEntity.status(HttpStatus.CREATED).body(novaOcorrencia);
     }
 
     @PutMapping("/{id}")
     @Operation(summary = "Atualizar ocorrência")
-    public ResponseEntity<Ocorrencia> atualizar(
+    public ResponseEntity<OcorrenciaResponse> atualizar(
             @PathVariable Long id,
-            @Valid @RequestBody Ocorrencia ocorrencia) {
-        return ResponseEntity.ok(ocorrenciaService.atualizar(id, ocorrencia));
+            @Valid @RequestBody OcorrenciaRequest request) {
+        return ResponseEntity.ok(ocorrenciaService.atualizar(id, request));
     }
 
     @PatchMapping("/{id}/status")
     @Operation(summary = "Atualizar status da ocorrência")
-    public ResponseEntity<Ocorrencia> atualizarStatus(
+    public ResponseEntity<OcorrenciaResponse> atualizarStatus(
             @PathVariable Long id,
             @RequestParam StatusOcorrencia status) {
         return ResponseEntity.ok(ocorrenciaService.atualizarStatus(id, status));
