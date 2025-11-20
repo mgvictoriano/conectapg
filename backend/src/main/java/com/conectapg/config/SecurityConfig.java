@@ -25,9 +25,9 @@ public class SecurityConfig {
             .cors(cors -> cors.configurationSource(corsConfigurationSource()))
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/v3/api-docs/**", "/api/swagger-ui/**", "/api/swagger-ui.html").permitAll()
-                .requestMatchers("/api/ocorrencias/**").permitAll() // Temporário - implementar autenticação depois
-                .requestMatchers("/api/usuarios/**").permitAll() // Temporário - implementar autenticação depois
+                .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
+                .requestMatchers("/ocorrencias/**").permitAll() // Temporário - implementar autenticação depois
+                .requestMatchers("/usuarios/**").permitAll() // Temporário - implementar autenticação depois
                 .anyRequest().authenticated()
             );
 

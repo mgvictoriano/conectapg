@@ -1,0 +1,33 @@
+# Arquivos de ambiente
+.env
+.env.local
+
+# Logs
+*.log
+logs/
+
+# IDEs
+.idea/
+.vscode/
+*.iml
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Backend (Maven)
+backend/target/
+backend/.mvn/
+backend/mvnw
+backend/mvnw.cmd
+
+# Frontend (Node)
+frontend/node_modules/
+frontend/build/
+frontend/dist/
+frontend/.next/
+
+# Docker
+.docker/

@@ -111,33 +111,65 @@ A solução foi modelada utilizando o **Modelo C4** com separação em múltiplo
 
 ## 🚀 Como Executar
 
-### Pré-requisitos
+### 🐳 Opção 1: Com Docker (Recomendado)
+
+**Pré-requisitos:**
+- Docker 20.10+
+- Docker Compose 2.0+
+
+**Início rápido:**
+
+```bash
+# Inicia tudo (PostgreSQL + Backend)
+./start.sh
+
+# Acesse a aplicação
+# API: http://localhost:8080/api
+# Swagger: http://localhost:8080/api/swagger-ui.html
+```
+
+**Comandos úteis:**
+
+```bash
+./logs.sh      # Ver logs em tempo real
+./stop.sh      # Parar a aplicação
+./rebuild.sh   # Rebuild após mudanças no código
+```
+
+> 📖 **Guia completo de setup**: Veja [SETUP.md](./SETUP.md) para instruções detalhadas, troubleshooting e mais opções.
+
+### 💻 Opção 2: Desenvolvimento Local (sem Docker)
+
+**Pré-requisitos:**
 - Java 17+
 - Maven 3.8+
 - PostgreSQL 14+
-- Node.js 18+ (para o frontend)
 
-### Backend
+**Passos:**
 
-1. **Configure o banco de dados** no arquivo `application.properties`:
-```properties
-spring.datasource.url=jdbc:postgresql://localhost:5432/conectapg
-spring.datasource.username=seu_usuario
-spring.datasource.password=sua_senha
+1. **Configure o banco de dados**:
+```bash
+createdb conectapg
 ```
 
-2. **Execute o projeto**:
+2. **Configure variáveis de ambiente**:
+```bash
+export DB_USERNAME=postgres
+export DB_PASSWORD=sua_senha
+```
+
+3. **Execute o projeto**:
 ```bash
 cd backend
 ./mvnw spring-boot:run
 ```
 
-3. **Acesse a documentação da API**:
+4. **Acesse a aplicação**:
 ```
-http://localhost:8080/swagger-ui.html
+http://localhost:8080/api/swagger-ui.html
 ```
 
-### Testes
+### 🧪 Testes
 
 ```bash
 cd backend
