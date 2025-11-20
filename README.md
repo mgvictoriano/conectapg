@@ -49,11 +49,20 @@ A solução foi modelada utilizando o **Modelo C4** com separação em múltiplo
   - Sistema de status e priorização
   - Filtros avançados por status, categoria e localização
 
+- **Frontend React**
+  - Interface completa e responsiva
+  - 5 telas principais (Login, Lista, Criar, Detalhe, Painel)
+  - Autenticação com persistência
+  - Filtros e busca de ocorrências
+  - Dashboard com estatísticas e gráficos
+  - Design moderno com TailwindCSS
+
 ### 🔄 Em Desenvolvimento
 
-- Sistema de autenticação JWT
+- Sistema de autenticação JWT no backend
+- Upload de imagens
 - Notificações em tempo real
-- Dashboard administrativo
+- Mapa interativo de ocorrências
 
 ---
 
@@ -103,9 +112,15 @@ A solução foi modelada utilizando o **Modelo C4** com separação em múltiplo
 - **JUnit 5 + Mockito** - Testes unitários
 
 ### Frontend
-- **React** (em desenvolvimento)
-- **TypeScript**
-- **Tailwind CSS**
+- **React 18**
+- **Vite** - Build tool
+- **React Router DOM** - Navegação
+- **Axios** - Cliente HTTP
+- **React Hook Form** - Formulários
+- **Zustand** - Estado global
+- **TailwindCSS** - Estilização
+- **React Icons** - Ícones
+- **date-fns** - Datas
 
 ---
 
@@ -175,6 +190,27 @@ http://localhost:8080/api/swagger-ui.html
 cd backend
 ./mvnw test
 ```
+
+### 🎨 Frontend
+
+**Pré-requisito:** Node.js 18+
+
+```bash
+# Instalar dependências
+cd frontend
+npm install
+
+# Iniciar em modo desenvolvimento
+npm run dev
+
+# Acesse: http://localhost:3000
+```
+
+> 📖 **Guia completo do frontend**: Veja [FRONTEND_SETUP.md](./FRONTEND_SETUP.md)
+
+**Usuários de teste:**
+- Admin: `admin@conectapg.com` / senha: `password`
+- Cidadão: `joao@example.com` / senha: `password`
 
 ---
 
