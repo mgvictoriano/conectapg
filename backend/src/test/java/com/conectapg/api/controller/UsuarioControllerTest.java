@@ -185,4 +185,38 @@ class UsuarioControllerTest {
                         .content(objectMapper.writeValueAsString(usuarioRequest)))
                 .andExpect(status().isBadRequest());
     }
+
+    @Test
+    @WithMockUser
+    void deveBuscarUsuariosPorTipo() throws Exception {
+        UsuarioResponse usuarioAdmin = UsuarioResponse.builder()
+                .id(2L)
+                .nome("Admin Sistema")
+                .email("admin@conectapg.com")
+                .tipo(Usuario.TipoUsuario.ADMIN)
+                .ativo(true)
+                .dataCriacao(LocalDateTime.now())
+                .totalOcorrencias(0)
+                .build();
+
+        List<UsuarioResponse> usuarios = Arrays.asList(usuarioAdmin);
+        when(usuarioService.buscarPorTipo(Usuario.TipoUsuario.ADMIN)).thenReturn(usuarios);
+
+        mockMvc.perform(get("/usuarios/tipo/ADMIN"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].tipo").value("ADMIN"))
+                .andExpect(jsonPath("$[0].nome").value("Admin Sistema"));
+    }
+
+    @Test
+    @WithMockUser
+    void deveBuscarUsuariosAtivos() throws Exception {
+        List<UsuarioResponse> usuarios = Arrays.asList(usuarioResponse);
+        when(usuarioService.buscarAtivos()).thenReturn(usuarios);
+
+        mockMvc.perform(get("/usuarios/ativos"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].ativo").value(true))
+                .andExpect(jsonPath("$[0].nome").value("João Silva"));
+    }
 }
