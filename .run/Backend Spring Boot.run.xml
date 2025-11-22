@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Backend Spring Boot" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <module name="conectapg-backend" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="com.conectapg.ConectaPgApplication" />
+    <option name="ACTIVE_PROFILES" value="dev" />
+    <option name="ALTERNATIVE_JRE_PATH" />
+    <envs>
+      <env name="SPRING_PROFILES_ACTIVE" value="dev" />
+    </envs>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
